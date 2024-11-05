@@ -3,3 +3,30 @@ title: "01-disease-sign-plot"
 output: html_document
 date: "2024-11-05"
 ---
+
+```{python}
+$ conda install -c plotly plotly=5.24.1
+```
+
+
+
+
+```{python}
+import plotly.express as px
+import pandas as pd
+
+# Sample data
+data = {
+    'Sea Star Species': ['Dermasterias imbricata', 'Pisaster ochraceus', 'Pycnopodia helianthoides', 'Disease source Pycnoodia helianthoides'],
+    'Disease Sign': ['normal', 'twist', 'armdrop', 'mortality', 'normal', 'twist', 'armdrop', 'mortality', 'normal', 'twist', 'armdrop', 'mortality', 'normal', 'twist', 'armdrop', 'mortality'],
+    'Count': [60, 0, 0, 0, 15, 3, 2, 1, 13, 2, 2, 1, 7, 1, 2, 1]
+}
+
+df = pd.DataFrame(data)
+
+# Create stacked bar plot
+fig = px.bar(df, x='Sea Star Species', y='Experimental Day', color='Disease Sign', barmode='stack', title='Stacked Bar Plot of Disease Sign in each species over time')
+fig.show()
+
+
+```
